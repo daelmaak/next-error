@@ -216,11 +216,17 @@ export const activate = (context: vscode.ExtensionContext) => {
             );
 
             // Return the next/previous file
-            return filesSorted[
-                activeFileIndex === -1
-                    ? 0
-                    : (activeFileIndex + 1) % filesSorted.length
-            ];
+            const modifier = direction === "next" ? 1 : -1;
+            let nextFileIndex;
+            if (activeFileIndex === -1) {
+                nextFileIndex =
+                    direction === "next" ? 0 : filesSorted.length - 1;
+            } else {
+                nextFileIndex =
+                    (activeFileIndex + modifier + filesSorted.length) %
+                    filesSorted.length;
+            }
+            return filesSorted[nextFileIndex];
         };
         const [uri, diagnostics] = getNextFile();
 
