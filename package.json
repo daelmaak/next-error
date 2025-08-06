@@ -2,7 +2,7 @@
     "name": "next-error",
     "displayName": "Next Error",
     "description": "Seamless error navigation",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "publisher": "daelmaak",
     "icon": "icon.gif",
     "engines": {
